@@ -15,17 +15,32 @@ import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.SwerveControllerCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.Constants.AutoConstants;
 import frc.robot.Constants.DriveConstants;
 import frc.robot.Constants.OIConstants;
 import frc.robot.commands.SwerveJoystickCmd;
 import frc.robot.subsystems.SwerveSubsystem;
+import frc.robot.commands.ZeroHeading;
 
 public class RobotContainer {
 
     private final SwerveSubsystem swerveSubsystem = new SwerveSubsystem();
 
     private final Joystick driverJoytick = new Joystick(OIConstants.kDriverControllerPort);
+
+    Trigger button1 = new JoystickButton(driverJoytick, 1);
+    Trigger button2 = new JoystickButton(driverJoytick, 2);
+    Trigger button3 = new JoystickButton(driverJoytick, 3);
+    Trigger button4 = new JoystickButton(driverJoytick, 4);
+    Trigger button5 = new JoystickButton(driverJoytick, 5);
+    Trigger button6 = new JoystickButton(driverJoytick, 6);
+    Trigger button7 = new JoystickButton(driverJoytick, 7);
+    Trigger button8 = new JoystickButton(driverJoytick, 8);
+    Trigger button9 = new JoystickButton(driverJoytick, 9);
+    Trigger button10 = new JoystickButton(driverJoytick, 10);
+    Trigger button11 = new JoystickButton(driverJoytick, 11);
+    Trigger button12 = new JoystickButton(driverJoytick, 12);
 
     public RobotContainer() {
         swerveSubsystem.setDefaultCommand(new SwerveJoystickCmd(
@@ -39,7 +54,7 @@ public class RobotContainer {
     }
 
     private void configureButtonBindings() {
-        new JoystickButton(driverJoytick, 2).onTrue(swerveSubsystem.zeroHeading());
+        button1.onTrue(new ZeroHeading(swerveSubsystem));
     }
 
     public Command getAutonomousCommand() {
