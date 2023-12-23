@@ -8,9 +8,11 @@ import edu.wpi.first.math.util.Units;
 public final class Constants {
 
     public static final class ModuleConstants {
+        
+        //Check AndyMark for specifications on the following 3 variables
         public static final double kWheelDiameterMeters = Units.inchesToMeters(4);
-        public static final double kDriveMotorGearRatio = 1 / 5.8462;
-        public static final double kTurningMotorGearRatio = 1 / 18.0;
+        public static final double kDriveMotorGearRatio = 1 / 6.75;
+        public static final double kTurningMotorGearRatio = 1 / 12.8;
         public static final double kDriveEncoderRot2Meter = kDriveMotorGearRatio * Math.PI * kWheelDiameterMeters;
         public static final double kTurningEncoderRot2Rad = kTurningMotorGearRatio * 2 * Math.PI;
         public static final double kDriveEncoderRPM2MeterPerSec = kDriveEncoderRot2Meter / 60;
@@ -20,25 +22,26 @@ public final class Constants {
 
     public static final class DriveConstants {
 
-        public static final double kTrackWidth = Units.inchesToMeters(21);
-        // Distance between right and left wheels
-        public static final double kWheelBase = Units.inchesToMeters(25.5);
-        // Distance between front and back wheels
+        public static final double kTrackWidth = Units.inchesToMeters(22);
+        // Distance between the center of the right and left wheels in inches
+        public static final double kWheelBase = Units.inchesToMeters(22);
+        // Distance between the center of the front and back wheels in inches
         public static final SwerveDriveKinematics kDriveKinematics = new SwerveDriveKinematics(
                 new Translation2d(kWheelBase / 2, -kTrackWidth / 2),
                 new Translation2d(kWheelBase / 2, kTrackWidth / 2),
                 new Translation2d(-kWheelBase / 2, -kTrackWidth / 2),
                 new Translation2d(-kWheelBase / 2, kTrackWidth / 2));
 
-        public static final int kFrontLeftDriveMotorPort = 8;
-        public static final int kBackLeftDriveMotorPort = 2;
-        public static final int kFrontRightDriveMotorPort = 6;
-        public static final int kBackRightDriveMotorPort = 4;
+        //Plug into any SparkMax with a USB-C cable and use the utility on the desktop to check the port IDs of each motor 
+        public static final int kFrontLeftDriveMotorPort = 8;   //FL
+        public static final int kBackLeftDriveMotorPort = 2;    //BL
+        public static final int kFrontRightDriveMotorPort = 6;  //FR
+        public static final int kBackRightDriveMotorPort = 4;   //BR
 
-        public static final int kFrontLeftTurningMotorPort = 7;
-        public static final int kBackLeftTurningMotorPort = 1;
-        public static final int kFrontRightTurningMotorPort = 5;
-        public static final int kBackRightTurningMotorPort = 3;
+        public static final int kFrontLeftTurningMotorPort = 7;     //FL
+        public static final int kBackLeftTurningMotorPort = 1;      //BL
+        public static final int kFrontRightTurningMotorPort = 5;    //FR
+        public static final int kBackRightTurningMotorPort = 3;     //BR
 
         public static final boolean kFrontLeftTurningEncoderReversed = true;
         public static final boolean kBackLeftTurningEncoderReversed = true;
@@ -50,6 +53,7 @@ public final class Constants {
         public static final boolean kFrontRightDriveEncoderReversed = false;
         public static final boolean kBackRightDriveEncoderReversed = false;
 
+        //I think we need to use the analog ports on the robo rio for these???
         public static final int kFrontLeftDriveAbsoluteEncoderPort = 0;
         public static final int kBackLeftDriveAbsoluteEncoderPort = 2;
         public static final int kFrontRightDriveAbsoluteEncoderPort = 1;
@@ -60,12 +64,14 @@ public final class Constants {
         public static final boolean kFrontRightDriveAbsoluteEncoderReversed = false;
         public static final boolean kBackRightDriveAbsoluteEncoderReversed = false;
 
+        //***** We need to change these numbers once we get swerve up and working *****
         public static final double kFrontLeftDriveAbsoluteEncoderOffsetRad = -0.254;
         public static final double kBackLeftDriveAbsoluteEncoderOffsetRad = -1.252;
         public static final double kFrontRightDriveAbsoluteEncoderOffsetRad = -1.816;
         public static final double kBackRightDriveAbsoluteEncoderOffsetRad = -4.811;
 
-        public static final double kPhysicalMaxSpeedMetersPerSecond = 5;
+        //Check Andymark for the max speed of the swerve modules IN METERS PER SECOND
+        public static final double kPhysicalMaxSpeedMetersPerSecond = 4.4196;
         public static final double kPhysicalMaxAngularSpeedRadiansPerSecond = 2 * 2 * Math.PI;
 
         public static final double kTeleDriveMaxSpeedMetersPerSecond = kPhysicalMaxSpeedMetersPerSecond / 4;
